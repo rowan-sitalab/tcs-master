@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+#TODO: figure out why I need this here and in bootstrap.yml
+#spring:
+#  application:
+#    name: testLatticeApp
+
+ribbon:
+  ServerListRefreshInterval: 1000
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+# list of host:port pairs used for establishing the initial connections to the Kakfa cluster
+kafka:
+  servers:
+    bootstrap: 127.0.0.1:9092
+# topic for messages
+  topic:
+    json: json.t
+
+# Log file name
+logging:
+  file: spring-kafka-json.log
+# Log levels severity mapping
+  level:
+    org:
+      springframework: INFO
+    aero:
+      sita:
+        lab:
+          tcs: DEBUG
